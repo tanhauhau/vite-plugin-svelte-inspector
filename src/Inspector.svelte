@@ -5,7 +5,7 @@
   let x;
   let y;
 
-  $: ({ file, line, col } = parse(open));
+  $: ({ file, line, column } = parse(open));
 
   onMount(() => {
     document.body.addEventListener('mouseover', mouseover);
@@ -26,19 +26,16 @@
   }
   function mouseover(event) {
     if (!enabled) return;
-    open = event.target.dataset.svelteInspect;
+    open = event.target.__svelte_meta;
   }
   function click() {
-    if (!enabled || !open) return;
-    fetch('/__svelte-inspector?open=' + open);
+    if (!enabled || !file) return;
+    fetch(`/__open-in-editor?file=${file}:${line}:${column}`);
   }
   function parse(open) {
     if (open) {
-      const parts = open.split(':');
-      const col = +parts.pop();
-      const line = +parts.pop();
-      const file = parts.join(':');
-      return { file, line, col };
+      const { loc: { file, line, column } } = open;
+      return { file, line: line + 1, column: column + 1 };
     }
     return {};
   }
@@ -55,7 +52,7 @@
   <ul class="overlay" style:left="{x + 10}px" style:top="{y + 10}px">
     <li>file: {'<'}{file}{'>'}</li>
     <li>line: {line}</li>
-    <li>column: {col}</li>
+    <li>column: {column}</li>
   </ul>
 {/if}
 

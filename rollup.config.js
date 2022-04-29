@@ -1,4 +1,3 @@
-import { nodeResolve } from '@rollup/plugin-node-resolve';
 import svelte from 'rollup-plugin-svelte';
 
 export default {
@@ -24,7 +23,5 @@ export default {
         return code;
       },
     },
-    nodeResolve(),
   ],
-  external: ['svelte/compiler'],
 };
