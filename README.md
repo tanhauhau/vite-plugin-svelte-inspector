@@ -2,6 +2,8 @@
 
 # vite-plugin-svelte-inspector
 
+Play with the [LIVE DEMO](https://stackblitz.com/edit/sveltejs-kit-template-default-gnpnjl).
+
 ## Installation
 
 ```sh
