@@ -1,6 +1,6 @@
 import Inspector from './Inspector.svelte';
 
-export default function () {
+export default function ({enabled=true}) {
   return {
     name: 'vite-plugin-svelte-inspector',
     enforce: 'pre',
@@ -13,7 +13,7 @@ export default function () {
           '\n' +
           Inspector +
           `
-        new $({ target: document.body });
+        new $({ target: document.body, props: { enabled: ${enabled} } });
       `
         );
       }
