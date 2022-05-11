@@ -1,3 +1,6 @@
+> If you are using `vite-plugin-svelte`, use the `inspector` options instead:
+> https://github.com/sveltejs/vite-plugin-svelte/blob/main/docs/config.md#inspector
+
 ![logo](./src/logo.png)
 
 # vite-plugin-svelte-inspector
