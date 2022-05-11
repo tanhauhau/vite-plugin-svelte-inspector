@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  let enabled = true;
+  export let enabled = true;
   let open;
   let x;
   let y;
